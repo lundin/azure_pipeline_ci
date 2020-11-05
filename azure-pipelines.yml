@@ -21,7 +21,6 @@ steps:
     workingDirectory: '.'
 - task: Go@0
   inputs:
-    command: 'build'
     workingDirectory: '.'
     command: 'custom'
     customCommand: 'run'
