@@ -1,13 +1,8 @@
 # Starter pipeline
-- task: Go@0
-  inputs:
-    command: 'build'
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
 - master
+
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -15,6 +10,27 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+
+- task: GoTool@0
+  inputs:
+    version: '1.13.5'
+- task: Go@0
+  inputs:
+    command: 'get'
+    arguments: '-d'
+    workingDirectory: '.'
+- task: Go@0
+  inputs:
+    workingDirectory: '.'
+    command: 'custom'
+    customCommand: 'run'
+    arguments: 'main.go'
+- task: Go@0
+  inputs:
+    workingDirectory: '.'
+    command: 'custom'
+    customCommand: 'run'
+    arguments: 'main.go'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
