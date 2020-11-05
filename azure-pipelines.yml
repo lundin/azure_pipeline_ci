@@ -23,6 +23,9 @@ steps:
   inputs:
     command: 'build'
     workingDirectory: '.'
+    command: 'custom'
+    customCommand: 'run'
+    arguments: 'main.go'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
